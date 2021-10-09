@@ -20,4 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/email-test', function (){
+    return new \App\Mail\MessageTest();
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->resource('/task', App\Http\Controllers\TaskController::class);
